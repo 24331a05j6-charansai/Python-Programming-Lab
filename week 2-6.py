@@ -1,0 +1,6 @@
+a=input("Enter the first string:")
+print(a)
+b=input("Enter the second string:")
+print(b)
+c=(a+" "+b)
+print("after concatenation:",c)
