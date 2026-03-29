@@ -1,0 +1,37 @@
+import tkinter as tk
+from tkinter import messagebox, filedialog
+gui = tk.Tk()
+gui.title("GUI Widgets Demo")
+gui.geometry("400x400")
+frame = tk.Frame(gui)
+frame.pack()
+scrollbar = tk.Scrollbar(frame)
+scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+listbox = tk.Listbox(frame, yscrollcommand=scrollbar.set)
+for i in range(1, 21):
+    listbox.insert(tk.END, "Item " + str(i))
+listbox.pack()
+scrollbar.config(command=listbox.yview)
+def show_message():
+    messagebox.showinfo("Message", "Hello! This is a Message Box")
+btn_msg = tk.Button(gui, text="Show Message", command=show_message)
+btn_msg.pack(pady=5)
+def open_file():
+    file = filedialog.askopenfilename()
+    messagebox.showinfo("Selected File", file)
+btn_file = tk.Button(gui, text="Open File", command=open_file)
+btn_file.pack(pady=5)
+menu = tk.Menu(gui)
+gui.config(menu=menu)
+file_menu = tk.Menu(menu, tearoff=0)
+menu.add_cascade(label="File", menu=file_menu)
+file_menu.add_command(label="Open", command=open_file)
+file_menu.add_separator()
+file_menu.add_command(label="Exit", command=gui.quit)
+mb = tk.Menubutton(gui, text="Options", relief=tk.RAISED)
+mb.menu = tk.Menu(mb, tearoff=0)
+mb["menu"] = mb.menu
+mb.menu.add_command(label="Option 1")
+mb.menu.add_command(label="Option 2")
+mb.pack(pady=10)
+gui.mainloop()
