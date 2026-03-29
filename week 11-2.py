@@ -1,0 +1,15 @@
+import tkinter as tk
+gui = tk.Tk()
+gui.title("Simple GUI App")
+nameLabel = tk.Label(gui, text="Enter your name:")
+nameLabel.pack()
+nameEntry = tk.Entry(gui)
+nameEntry.pack()
+def display():
+    name = nameEntry.get()
+    resultLabel.config(text="Hello " + name)
+btn = tk.Button(gui, text="Submit", command=display)
+btn.pack()
+resultLabel = tk.Label(gui, text="")
+resultLabel.pack()
+gui.mainloop()
